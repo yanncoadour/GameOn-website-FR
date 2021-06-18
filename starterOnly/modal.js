@@ -12,6 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const fermetureModalBtn = document.querySelectorAll(".close");
+const btnSubmit = document.querySelector(".btn-submit");
+const btnValid = document.querySelector(".btn-valid");
 
 // ---------- OUVERTURE/FERMETURE FENETRE MODALE --------------//
 
@@ -39,6 +41,7 @@ function closeModal () {
 let regexPrenom = /^[a-zA-Z]{2}/
 let regexNom = /^[a-zA-Z]{2}/
 let regexEmail = /^[a-z0-9.-_]+@[a-z0-9.-_]{2,}\.[a-z]{2,4}$/
+let regexDate = /^\d{4}-\d{2}-\d{2}$/;
 
 //Variables
 let nom = document.getElementById('last');
@@ -47,6 +50,7 @@ let email = document.getElementById('email');
 let dateNaissance = document.getElementById('birthdate');
 let combien = document.getElementById('quantity');
 let conditionUtilisateur = document.getElementById('checkbox1');
+
 //Variables erreurs
 let erreurNom = document.getElementById('error-last');
 let erreurPrenom = document.getElementById('error-first');
@@ -55,6 +59,11 @@ let erreurDateNaissance = document.getElementById('error-birthdate');
 let erreurCombien = document.getElementById('error-quantity')
 let erreurVille = document.getElementById('error-city');
 let erreurConditionUtilisateur = document.getElementById('error-conditionutilisateur');
+
+//Variables confirmations
+let fermetureConfirm = document.querySelector(".closeConfirmation");
+let confirmationIns = document.getElementById("confirmation");
+
 
 //Prénom
 prenom.addEventListener("input", function(){
@@ -99,6 +108,8 @@ nom.addEventListener("input", function(){
     erreurNom.style.display = 'none';
   }
 })
+
+
 //Email
 
 email.addEventListener("input", function(){
@@ -127,7 +138,12 @@ email.addEventListener("input", function(){
 
 if (dateNaissance.value == "") {
   erreurDateNaissance.innerHTML = "Veuillez entrer votre date de naissance."
-  dateNaissance.style.border = "2px solid #FF4E60"
+  dateNaissance.style.border = "2px solid red"
+  erreurDateNaissance.style.fontSize = '12px';
+  erreurDateNaissance.style.color = 'red';
+  erreurDateNaissance.style.marginTop = "5px";
+  
+
 } else {
   document.getElementById("anniv-error").innerHTML = ""
   dateNaissance.style.border = "none"
@@ -166,6 +182,9 @@ if(location1.checked || location2.checked || location3.checked || location4.chec
 
 if (conditionUtilisateur.checked == false) {
   erreurConditionUtilisateur.innerHTML = "Vous devez accepter les conditions d'utilisation."
+  erreurConditionUtilisateur.style.fontSize = '12px';
+  erreurConditionUtilisateur.style.color = 'red';
 } else {
   erreurConditionUtilisateur.innerHTML = ""
 }
+

@@ -66,6 +66,16 @@
         <div class="content">
           <div class="close"></div>
 
+          <!--Fenetre modale confirmation inscription-->
+          <div id="confirmation" class="confirmation">
+            <div class="confirmation-content">
+              <span class="closeConfirmation"></span>
+                <div class="confirmation-body">
+                  <span class="confirmationText">Merci ! <br> Votre réservation a bien été reçue.</span>
+              </div>
+            </div>
+          </div>
+
           <div class="modal-body">
 
             <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
@@ -151,7 +161,7 @@
               </div>
 
               <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
-            
+              <input class="button btn-valid" type="submit" value="Fermer" />
             </form>
 
           </div>
