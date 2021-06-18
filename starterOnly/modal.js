@@ -11,8 +11,10 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const fermetureModalBtn = document.querySelectorAll(".close");
 
 // ---------- OUVERTURE/FERMETURE FENETRE MODALE --------------//
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -29,6 +31,7 @@ fermetureModalBtn.forEach((close) => close.addEventListener("click", closeModal)
 function closeModal () {
   modalbg.style.display = "none";
 }
+
 
 // ------------------------FORMULAIRE ----------------------//
 
@@ -117,3 +120,22 @@ email.addEventListener("input", function(){
     erreurEmail.style.display = 'none';
   }
 })
+
+
+
+/*
+function validateEmail() {
+  let email = form.elements["email"];
+  let error = document.getElementById("error-email");
+  if (checkMail.test(email.value) === false) { 
+    email.classList.add("input-error");
+    error.innerText = "Saisissez un email valide";
+    return false;
+  } else {
+    email.classList.remove("input-error");
+    email.classList.add("input-validate");
+    error.innerText = "";
+    return true;
+  }
+}
+*/
