@@ -141,8 +141,6 @@ if (dateNaissance.value == "") {
   dateNaissance.style.border = "2px solid red"
   erreurDateNaissance.style.fontSize = '12px';
   erreurDateNaissance.style.color = 'red';
-  erreurDateNaissance.style.marginTop = "5px";
-  
 
 } else {
   document.getElementById("anniv-error").innerHTML = ""
@@ -188,3 +186,15 @@ if (conditionUtilisateur.checked == false) {
   erreurConditionUtilisateur.innerHTML = ""
 }
 
+let validationFormulaire = () => {
+  if (  regexPrenom.test(prenom.value) == true &&
+        regexNom.test(nom.value) == true && 
+        regexEmail.test(email.value) == true
+        ) {
+          confirmationbg.style.display = "none";
+        } else {
+          confirmationbg.style.display = "flex";
+          btnSubmit.style.display = 'none';
+          btnValid.style.display = 'block';
+      }
+  }
