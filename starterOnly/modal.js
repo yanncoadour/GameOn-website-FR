@@ -116,7 +116,7 @@ function validationDate() {
     erreurDateNaissance.style.color = "red";
     return false;
   } else {
-    document.getElementById("anniv-error").innerHTML = "";
+    document.getElementById("error-birthdate").innerHTML = "";
     dateNaissance.style.border = "none";
     return true;
   }
@@ -126,7 +126,7 @@ function validationDate() {
 function validationCombien() {
   let combien = document.getElementById("quantity");
   let erreurCombien = document.getElementById("error-quantity");
-  if (combien.value < 0 || combien.value > 100 || combien.value != "") {
+  if (combien.value < 0 || combien.value > 100 || combien.value == "") {
     erreurCombien.innerText =
       "Veuillez rentrer une quantité comprise entre 0 et 99";
     erreurCombien.style.fontSize = "12px";
@@ -142,29 +142,17 @@ function validationCombien() {
 
 //Ville
 function validationVille() {
-  let location1 = document.getElementById("location1");
-  let location2 = document.getElementById("location2");
-  let location3 = document.getElementById("location3");
-  let location4 = document.getElementById("location4");
-  let location5 = document.getElementById("location5");
-  let location6 = document.getElementById("location6");
+  let ville = document.querySelectorAll("imput [type=radio]")
   let erreurVille = document.getElementById("error-city");
-  if (
-    location1.checked == false ||
-    location2.checked == false ||
-    location3.checked == false ||
-    location4.checked == false ||
-    location5.checked == false ||
-    location6.checked == false
-  ) {
-    erreurVille.innerText = "Vous devez choisir une Ville.";
-    erreurVille.style.fontSize = "12px";
-    erreurVille.style.color = "red";
+  for (i=0; i < ville.length; i++) {
+    if(ville[i].checked){
+      erreurVille.innerText="";
+      return true;
+    }else {
+    erreurVille.innerText="Vous devez choisir une ville";
     return false;
-  } else {
-    erreurVille.innerText = "";
-    return true;
-  }
+    }
+  } 
 }
 
 //Condition Utilisateur
@@ -212,8 +200,16 @@ function checkImputs() {
   } else if (validationCondition() === false) {
     return false;
   } else {
-  
-
-
+      form.remove();
+      let modal = document.querySelector(".modal-body");
+      let message = document.createElement("p");
+      message.classList.add("message-validation");
+      message.textContent = "Merci ! Votre réservation a été recue !";
+      modal.apprendChild(message);
+      let fermetureModalBtn = document.createElement("button");
+      fermetureModalBtn.classList.add("btn-submit");
+      fermetureModalBtn.textContent = "fermer";
+      fermetureModalBtn.addEventListener("click", closeModal);
+      modal.appendChild(fermetureModalBtn);
   }
 }
