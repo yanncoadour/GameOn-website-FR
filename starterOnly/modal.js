@@ -142,18 +142,21 @@ function validationCombien() {
 
 //Ville
 function validationVille() {
-  let ville = document.querySelectorAll("imput [type=radio]")
+  let villes = document.querySelectorAll("imput [type=radio]");
   let erreurVille = document.getElementById("error-city");
-  for (i=0; i < ville.length; i++) {
-    if(ville[i].checked){
-      erreurVille.innerText="";
+    if(location1.checked || location2.checked || location3.checked || location4.checked || location5.checked || location6.checked){
+      erreurVille.textContent="";
       return true;
-    }else {
-    erreurVille.innerText="Vous devez choisir une ville";
-    return false;
     }
+
+    erreurVille.innerText="Vous devez choisir une ville";
+    erreurVille.style.fontSize = "12px";
+    erreurVille.style.color = "red";
+    
+    return false;
+    
   } 
-}
+
 
 //Condition Utilisateur
 function validationCondition() {
@@ -191,11 +194,9 @@ function checkImputs() {
     return false;
   } else if (validationDate() === false) {
     return false;
-  } else if (validationVille() === false) {
-    return false;
   } else if (validationCombien() === false) {
     return false;
-  } else if (validationPrenom() === false) {
+  } else if (validationVille() === false) {
     return false;
   } else if (validationCondition() === false) {
     return false;
