@@ -151,10 +151,10 @@ function validationCondition() {
 let form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  checkImputs();
+  validate();
 });
 
-function checkImputs() {
+function validate() {
   if (validationPrenom() === false) {
     return false;
   } else if (validationNom() === false) {
@@ -175,8 +175,8 @@ function checkImputs() {
      let message = document.createElement("p");
      message.classList.add("message-validation");
      message.textContent = "Merci! Votre réservation a été recue !";
-     message.style.marginBottom = "225px";
-     message.style.marginTop = "225px";
+     message.style.marginBottom = "250px";
+     message.style.marginTop = "250gitpx";
      modal.appendChild(message);
      let fermetureModalBtn = document.createElement("button");
      fermetureModalBtn.classList.add("btn-submit");
