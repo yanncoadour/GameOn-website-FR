@@ -42,19 +42,13 @@ function validationPrenom() {
   let erreurPrenom = document.getElementById("error-first");
   let regexPrenom = /^[a-zA-Z]{2}/;
   if (regexPrenom.test(prenom.value) == false) {
-    prenom.style.color = "red";
-    prenom.style.borderColor = "red";
-    erreurPrenom.style.display = "block";
-    erreurPrenom.style.color = "red";
-    erreurPrenom.style.fontSize = "12px";
-    erreurPrenom.style.marginTop = "5px";
-    erreurPrenom.innerText =
-      "Veuillez entrer 2 caractères ou plus pour le champ du Prénom !";
+    prenom.classList.add("champsnonvalide");
+    erreurPrenom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom !";
     return false;
   } else {
-    erreurPrenom.style.display = "none";
-    prenom.style.border = "unset";
-    prenom.style.color = "green";
+    erreurPrenom.innerText = "";
+    prenom.classList.remove("champsnonvalide");
+    prenom.classList.add("champsvalide");
     return true;
   }
 }
@@ -65,19 +59,13 @@ function validationNom() {
   let erreurNom = document.getElementById("error-last");
   let regexNom = /^[a-zA-Z]{2}/;
   if (regexNom.test(nom.value) == false) {
-    nom.style.color = "red";
-    nom.style.borderColor = "red";
-    erreurNom.style.display = "block";
-    erreurNom.style.color = "red";
-    erreurNom.style.fontSize = "12px";
-    erreurNom.style.marginTop = "5px";
-    erreurNom.innerText =
-      "Veuillez entrer 2 caractères ou plus pour le champ du Prénom !";
+    nom.classList.add("champsnonvalide");
+    erreurNom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom !";
     return false;
   } else {
-    erreurNom.style.display = "none";
-    nom.style.border = "unset";
-    nom.style.color = "green";
+    erreurNom.innerText = "";
+    nom.classList.remove("champsnonvalide");
+    nom.classList.add("champsvalide");
     return true;
   }
 }
@@ -89,18 +77,13 @@ function validationEmail() {
   let erreurEmail = document.getElementById("error-email");
   let regexEmail = /^[a-z0-9.-_]+@[a-z0-9.-_]{2,}\.[a-z]{2,4}$/;
   if (regexEmail.test(email.value) == false) {
-    email.style.color = "red";
-    email.style.borderColor = "red";
-    erreurEmail.style.display = "block";
-    erreurEmail.style.color = "red";
-    erreurEmail.style.fontSize = "12px";
-    erreurEmail.style.marginTop = "5px";
+    email.classList.add("champsnonvalide");
     erreurEmail.innerText = "Veuillez entrer une adresse mail valide !";
     return false;
   } else {
-    erreurEmail.style.display = "none";
-    email.style.border = "unset";
-    email.style.color = "green";
+    erreurEmail.innerText = "";
+    email.classList.remove("champsnonvalide");
+    email.classList.add("champsvalide");
     return true;
   }
 }
@@ -110,14 +93,13 @@ function validationDate() {
   let dateNaissance = document.getElementById("birthdate");
   let erreurDateNaissance = document.getElementById("error-birthdate");
   if (dateNaissance.value == "") {
-    erreurDateNaissance.innerHTML = "Veuillez entrer votre date de naissance.";
-    dateNaissance.style.border = "2px solid red";
-    erreurDateNaissance.style.fontSize = "12px";
-    erreurDateNaissance.style.color = "red";
+    erreurDateNaissance.innerText = "Veuillez entrer votre date de naissance.";
+    dateNaissance.classList.add("champsnonvalide");
     return false;
   } else {
-    document.getElementById("error-birthdate").innerHTML = "";
-    dateNaissance.style.border = "none";
+    dateNaissance.classList.remove("champsnonvalide");
+    dateNaissance.classList.add("champsvalide");
+    erreurDateNaissance.innerText = " ";
     return true;
   }
 }
@@ -127,15 +109,13 @@ function validationCombien() {
   let combien = document.getElementById("quantity");
   let erreurCombien = document.getElementById("error-quantity");
   if (combien.value < 0 || combien.value > 100 || combien.value == "") {
-    erreurCombien.innerText =
-      "Veuillez rentrer une quantité comprise entre 0 et 99";
-    erreurCombien.style.fontSize = "12px";
-    erreurCombien.style.color = "red";
-    combien.style.border = "solid 2px red";
+    erreurCombien.innerText = "Veuillez rentrer une quantité comprise entre 0 et 99";
+    combien.classList.add("champsnonvalide");
     return false;
   } else {
     erreurCombien.innerText = "";
-    combien.style.border = "";
+    combien.classList.remove("champsnonvalide");
+    combien.classList.add("champsvalide");
     return true;
   }
 }
@@ -148,27 +128,17 @@ function validationVille() {
       erreurVille.textContent="";
       return true;
     }
-
-    erreurVille.innerText="Vous devez choisir une ville";
-    erreurVille.style.fontSize = "12px";
-    erreurVille.style.color = "red";
-    
-    return false;
-    
+    erreurVille.innerText="Vous devez choisir une ville"; 
+    return false;  
   } 
 
 
 //Condition Utilisateur
 function validationCondition() {
   let conditionUtilisateur = document.getElementById("checkbox1");
-  let erreurConditionUtilisateur = document.getElementById(
-    "error-conditionutilisateur"
-  );
+  let erreurConditionUtilisateur = document.getElementById("error-conditionutilisateur");
   if (conditionUtilisateur.checked == false) {
-    erreurConditionUtilisateur.innerHTML =
-      "Vous devez accepter les conditions d'utilisation.";
-    erreurConditionUtilisateur.style.fontSize = "12px";
-    erreurConditionUtilisateur.style.color = "red";
+    erreurConditionUtilisateur.innerHTML = "Vous devez accepter les conditions d'utilisation.";  
     return false;
   } else {
     erreurConditionUtilisateur.innerHTML = "";
@@ -204,9 +174,9 @@ function checkImputs() {
      let modal = document.querySelector(".modal-body");
      let message = document.createElement("p");
      message.classList.add("message-validation");
-     message.textContent = "Merci ! Votre réservation a été recue !";
-     message.style.marginBottom = "200px";
-     message.style.marginTop = "200px";
+     message.textContent = "Merci! Votre réservation a été recue !";
+     message.style.marginBottom = "225px";
+     message.style.marginTop = "225px";
      modal.appendChild(message);
      let fermetureModalBtn = document.createElement("button");
      fermetureModalBtn.classList.add("btn-submit");
@@ -215,3 +185,4 @@ function checkImputs() {
      modal.appendChild(fermetureModalBtn);
   }
 }
+

@@ -36,9 +36,18 @@ img {
   overflow: hidden;
   margin: 3.5%;
 }
+
 .header-logo {
     float: left;
 }
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 160px;
+   
+  }
+}
+
 .main-navbar {
     float: right;
 }
@@ -75,6 +84,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color : #ff0000;
   }
 }
 
@@ -116,6 +126,16 @@ main {
 
 
 }
+
+
+@media screen and (max-width: 540px) {
+  main {
+    padding-left: 0vw;
+    padding-right: 0vw;
+    margin: 1px 1px 1px ;
+  }
+}
+
 
 .modal-btn {
   font-size: 145%;
@@ -442,12 +462,30 @@ input[data-error]::after {
   font-weight: normal;
   white-space: nowrap;
 }
+
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 2rem;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+}
+
+
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
 }
+@media screen and (max-width: 540px) {
+  .hero-text {
+  width: 700%;
+  font-size: 2em ;
+  }
+}
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -529,3 +567,19 @@ footer {
   }
 }
 
+.champsvalide{
+  color : green;
+  border-color : green ; 
+  
+}
+
+.champsnonvalide{
+ color: red;
+ border-color: red;
+}
+
+.message-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
