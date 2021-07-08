@@ -181,7 +181,6 @@ function validationCondition() {
 let form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   checkImputs();
 });
 
@@ -201,16 +200,18 @@ function checkImputs() {
   } else if (validationCondition() === false) {
     return false;
   } else {
-      form.remove();
-      let modal = document.querySelector(".modal-body");
-      let message = document.createElement("p");
-      message.classList.add("message-validation");
-      message.textContent = "Merci ! Votre réservation a été recue !";
-      modal.apprendChild(message);
-      let fermetureModalBtn = document.createElement("button");
-      fermetureModalBtn.classList.add("btn-submit");
-      fermetureModalBtn.textContent = "fermer";
-      fermetureModalBtn.addEventListener("click", closeModal);
-      modal.appendChild(fermetureModalBtn);
+     form.remove();
+     let modal = document.querySelector(".modal-body");
+     let message = document.createElement("p");
+     message.classList.add("message-validation");
+     message.textContent = "Merci ! Votre réservation a été recue !";
+     message.style.marginBottom = "200px";
+     message.style.marginTop = "200px";
+     modal.appendChild(message);
+     let fermetureModalBtn = document.createElement("button");
+     fermetureModalBtn.classList.add("btn-submit");
+     fermetureModalBtn.textContent = "fermer";
+     fermetureModalBtn.addEventListener("click", closeModal);
+     modal.appendChild(fermetureModalBtn);
   }
 }
